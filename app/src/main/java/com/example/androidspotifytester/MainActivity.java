@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements
         AuthenticationRequest.Builder builder = new AuthenticationRequest.Builder(CLIENT_ID,
                 AuthenticationResponse.Type.TOKEN,
                 REDIRECT_URI);
-        builder.setScopes(new String[]{"user-read-private", "streaming", "user-top-read"});
+        builder.setScopes(new String[]{"user-read-private", "user-read-email", "streaming", "user-top-read"});
         AuthenticationRequest request = builder.build();
 
         AuthenticationClient.openLoginActivity(this, REQUEST_CODE, request);
@@ -93,7 +93,9 @@ public class MainActivity extends AppCompatActivity implements
             public void success(UserPrivate userPrivate, retrofit.client.Response response) {
                 Log.d("GetMe", "SUCCESS");
                 me = userPrivate;
-                Log.d("Spotify api me", me.id);
+                Log.d("Spotify_api_me", me.toString());
+                Log.d("Spotify_api_id", me.id);
+                Log.d("Spotify_api_email", me.email);
 
             }
 
